@@ -1,46 +1,27 @@
-# jEpub
+# jepub-react
 
-[![npm version](https://badge.fury.io/js/jepub.svg)](https://www.npmjs.com/package/jepub)
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Flelinhtinh%2FjEpub.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Flelinhtinh%2FjEpub?ref=badge_shield)
 
 Simple EPUB builder library, works in modern browsers.
 
-## Demo
-
-1. [/demo](https://lelinhtinh.github.io/jEpub/demo/)
-2. [jsfiddle.net/rhov44gg](https://jsfiddle.net/baivong/rhov44gg/embedded/result,resources,js,html/)
 
 ## Installation
 
 ```bash
-npm install --save jepub
+npm install --save react-jepub
 ```
 
-You can also use it via a CDN:
+ 
 
+ 
 ```html
-<script src="https://unpkg.com/jepub/dist/jepub.min.js"></script>
-```
 
-or:
 
-```html
-<script src="https://cdn.jsdelivr.net/npm/jepub/dist/jepub.min.js"></script>
-```
-
-## Dependencies
-
-jEpub requires [JSZip](https://github.com/Stuk/jszip) and [EJS](https://github.com/mde/ejs). Make sure these libraries are loaded before starting your code.
-
-```html
-<script src="jszip.js"></script>
-<script src="ejs.js"></script>
-<script src="jepub.js"></script>
-<script>
+    import {jEpub} from "react-jepub"
+    
     const jepub = new jEpub()
     // jepub.init({
     // do something
-</script>
+ 
 ```
 
 ## Usage
@@ -148,8 +129,4 @@ Builds are concatenated and minified using [Webpack](https://webpack.js.org/) an
 npm run build
 ```
 
-## License
-
-[ISC](./LICENSE). Copyright 2018 [lelinhtinh](https://github.com/lelinhtinh)
-
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Flelinhtinh%2FjEpub.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Flelinhtinh%2FjEpub?ref=badge_large)
+ 

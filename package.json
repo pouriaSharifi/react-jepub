@@ -1,40 +1,27 @@
 {
-  "name": "jepub",
-  "version": "2.1.4",
+  "name": "react-jepub",
+  "version": "1.0.2",
   "description": "Generate simple EPUB books with JavaScript.",
-  "main": "dist/jepub.js",
-  "scripts": {
-    "clean": "rimraf dist",
-    "postclean": "mkdirp dist",
-    "prebuild": "npm run clean",
-    "build": "webpack --config webpack.development.config.js",
-    "postbuild": "webpack --config webpack.production.config.js",
-    "prestart": "npm run clean",
-    "start": "webpack --config webpack.development.config.js --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "main": "src/",
+  "types": "src/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lelinhtinh/jEpub.git"
+    "url": "git+https://github.com/pouriaSharifi/react-jepub"
   },
   "keywords": [
     "generator",
+    "jepub-react",
     "epub",
     "javascript",
     "browser",
     "library"
   ],
-  "author": "lelinhtinh",
+  "author": "poriya sharifi",
   "license": "ISC",
   "files": [
-    "demo/",
-    "dist/",
     "src/"
   ],
-  "bugs": {
-    "url": "https://github.com/lelinhtinh/jEpub/issues"
-  },
-  "homepage": "https://lelinhtinh.github.io/jEpub/",
+  "homepage": "https://github.com/pouriaSharifi/react-jepub",
   "dependencies": {
     "ejs": "^3.1.7",
     "image-type": "^4.1.0",

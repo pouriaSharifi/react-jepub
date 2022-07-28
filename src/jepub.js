@@ -5,15 +5,17 @@ import imageType from 'image-type';
 
 import language from './i18n.json';
 
-import container from './tpl/META-INF/container.xml';
-import cover from './tpl/OEBPS/front-cover.html';
-import notes from './tpl/OEBPS/notes.html';
-import page from './tpl/OEBPS/page.html';
-import tocInBook from './tpl/OEBPS/table-of-contents.html';
-import info from './tpl/OEBPS/title-page.html';
-import bookConfig from './tpl/book.opf';
-import mime from './tpl/mimetype';
-import toc from './tpl/toc.ncx';
+import container from './tpl/kepubjs/META-INF/container.xml';
+import cover from './tpl/kepubjs/OEBPS/front-cover.html.ejs';
+import notes from './tpl/kepubjs/OEBPS/notes.html.ejs';
+import page from './tpl/kepubjs/OEBPS/page.html.ejs';
+import tocInBook from './tpl/kepubjs/OEBPS/table-of-contents.html.ejs';
+import info from './tpl/kepubjs/OEBPS/title-page.html.ejs';
+import bookConfig from './tpl/kepubjs/book.opf.ejs';
+import mime from './tpl/kepubjs/mimetype';
+import toc from './tpl/kepubjs/toc.ncx.ejs';
+import ejs from 'ejs/ejs.min';
+import JSZip from 'jszip';
 
 export default class jEpub {
     constructor() {
