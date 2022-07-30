@@ -14,7 +14,6 @@ import info from './tpl/kepubjs/OEBPS/title-page.html.ejs';
 import bookConfig from './tpl/kepubjs/book.opf.ejs';
 import mime from './tpl/kepubjs/mimetype';
 import toc from './tpl/kepubjs/toc.ncx.ejs';
-import ejs from 'ejs/ejs.min';
 import JSZip from 'jszip';
 
 export default class jEpub {
@@ -59,15 +58,13 @@ export default class jEpub {
         this._Zip = new JSZip();
         this._Zip.file('mimetype', mime);
         this._Zip.file('META-INF/container.xml', container);
-        this._Zip.file('OEBPS/title-page.html', ejs.render(info, {
+        this._Zip.file('OEBPS/title-page.html', info( {
             i18n: this._I18n,
             title: this._Info.title,
             author: this._Info.author,
             publisher: this._Info.publisher,
             description: utils.parseDOM(this._Info.description),
             tags: this._Info.tags,
-        }, {
-            client: true
         }));
 
         return this;
@@ -122,11 +119,9 @@ export default class jEpub {
             path: `OEBPS/cover-image.${ext}`
         };
         this._Zip.file(this._Cover.path, data);
-        this._Zip.file('OEBPS/front-cover.html', ejs.render(cover, {
+        this._Zip.file('OEBPS/front-cover.html',  cover( {
             i18n: this._I18n,
             cover: this._Cover
-        }, {
-            client: true
         }));
         return this;
     }
@@ -158,11 +153,9 @@ export default class jEpub {
         if (utils.isEmpty(content)) {
             throw 'Notes is empty';
         } else {
-            this._Zip.file('OEBPS/notes.html', ejs.render(notes, {
+            this._Zip.file('OEBPS/notes.html',  notes({
                 i18n: this._I18n,
                 notes: utils.parseDOM(content)
-            }, {
-                client: true
             }));
             return this;
         }
@@ -175,22 +168,20 @@ export default class jEpub {
             throw `Content of ${title} is empty`;
         } else {
             if (!Array.isArray(content)) {
-                const template = ejs.compile(content, {
-                    client: true
-                });
-                content = template({
-                    image: this._Images
-                }, data => {
-                    return `<img src="${(data ? data.path: 'data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=')}" alt=""></img>`;
-                });
+                // const template = ejs.compile(content, {
+                //     client: true
+                // });
+                // content = template({
+                //     image: this._Images
+                // }, data => {
+                //     return `<img src="${(data ? data.path: 'data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=')}" alt=""></img>`;
+                // });
                 content = utils.parseDOM(content);
             }
-            this._Zip.file(`OEBPS/page-${index}.html`, ejs.render(page, {
+            this._Zip.file(`OEBPS/page-${index}.html`, page({
                 i18n: this._I18n,
                 title: title,
                 content: content
-            }, {
-                client: true
             }));
             this._Pages[index] = title;
             return this;
@@ -203,7 +194,7 @@ export default class jEpub {
         let notes = this._Zip.file('OEBPS/notes.html');
         notes = !notes ? false : true;
 
-        this._Zip.file('book.opf', ejs.render(bookConfig, {
+        this._Zip.file('book.opf',  bookConfig({
             i18n: this._I18n,
             uuid: this._Uuid,
             date: this._Date,
@@ -216,26 +207,20 @@ export default class jEpub {
             pages: this._Pages,
             notes: notes,
             images: this._Images
-        }, {
-            client: true
         }));
 
-        this._Zip.file('OEBPS/table-of-contents.html', ejs.render(tocInBook, {
+        this._Zip.file('OEBPS/table-of-contents.html', tocInBook({
             i18n: this._I18n,
             pages: this._Pages
-        }, {
-            client: true
         }));
 
-        this._Zip.file('toc.ncx', ejs.render(toc, {
+        this._Zip.file('toc.ncx', toc({
             i18n: this._I18n,
             uuid: this._Uuid,
             title: this._Info.title,
             author: this._Info.author,
             pages: this._Pages,
             notes: notes
-        }, {
-            client: true
         }));
 
         return this._Zip.generateAsync({

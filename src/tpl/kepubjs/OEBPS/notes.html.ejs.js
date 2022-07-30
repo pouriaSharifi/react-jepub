@@ -1,10 +1,10 @@
-export default `
+export default ({i18n,notes})=>`
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<%= i18n.code %>">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="${i18n.code}">
 
 <head>
- <title><%= i18n.note %></title>
+ <title>${i18n.note}</title>
  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
     <style type="text/css" class="kobostylehacks">div#book-inner { margin-top: 0; margin-bottom: 0;}</style>
 </head>
@@ -14,7 +14,7 @@ export default `
   <div id="book-inner">
    <div id="notes-page">
     <div class="ugc">
-     <%- notes %>
+     ${notes}
     </div>
    </div>
   </div>
