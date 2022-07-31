@@ -1,4 +1,4 @@
-export default ({cover,i18n})=>`
+export default ({cover,i18n,dir})=>`
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="${i18n.code}">
@@ -9,7 +9,7 @@ export default ({cover,i18n})=>`
     <style type="text/css" class="kobostylehacks">div#book-inner { margin-top: 0; margin-bottom: 0;}</style>
 </head>
 
-<body>
+<body dir="${dir}">
     <div id="book-columns">
   <div id="book-inner">
    <div id="cover-image">

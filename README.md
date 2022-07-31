@@ -1,4 +1,4 @@
-# jepub-react
+# react-jepub
 
 
 Simple EPUB builder library, works in modern browsers.
@@ -31,6 +31,7 @@ const jepub = new jEpub()
 jepub.init({
     i18n: 'en', // Internationalization
     title: 'Book title',
+    dir: 'ltr',
     author: 'Book author',
     publisher: 'Book publisher',
     description: '<b>Book</b> description', // optional

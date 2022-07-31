@@ -3,6 +3,7 @@ export declare class jEpub {
 
     init: ({
                i18n: string,
+               dir: string,
                title: string,
                author: string,
                publisher: string,

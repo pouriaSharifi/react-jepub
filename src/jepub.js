@@ -38,6 +38,7 @@ export default class jEpub {
 
         this._Info = Object.assign({}, {
             i18n: 'en',
+            dir: 'ltr',
             title: 'undefined',
             author: 'undefined',
             publisher: 'undefined',
@@ -65,6 +66,7 @@ export default class jEpub {
             publisher: this._Info.publisher,
             description: utils.parseDOM(this._Info.description),
             tags: this._Info.tags,
+            dir: this._Info.dir
         }));
 
         return this;
@@ -121,7 +123,8 @@ export default class jEpub {
         this._Zip.file(this._Cover.path, data);
         this._Zip.file('OEBPS/front-cover.html',  cover( {
             i18n: this._I18n,
-            cover: this._Cover
+            cover: this._Cover,
+            dir: this._Info.dir
         }));
         return this;
     }
@@ -155,7 +158,8 @@ export default class jEpub {
         } else {
             this._Zip.file('OEBPS/notes.html',  notes({
                 i18n: this._I18n,
-                notes: utils.parseDOM(content)
+                notes: utils.parseDOM(content),
+                dir: this._Info.dir
             }));
             return this;
         }
@@ -181,7 +185,9 @@ export default class jEpub {
             this._Zip.file(`OEBPS/page-${index}.html`, page({
                 i18n: this._I18n,
                 title: title,
-                content: content
+                content: content,
+                dir: this._Info.dir
+
             }));
             this._Pages[index] = title;
             return this;
@@ -211,7 +217,8 @@ export default class jEpub {
 
         this._Zip.file('OEBPS/table-of-contents.html', tocInBook({
             i18n: this._I18n,
-            pages: this._Pages
+            pages: this._Pages,
+            dir: this._Info.dir
         }));
 
         this._Zip.file('toc.ncx', toc({

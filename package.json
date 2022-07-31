@@ -1,6 +1,6 @@
 {
   "name": "react-jepub",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "Generate simple EPUB books with JavaScript.",
   "main": "src/",
   "types": "src/index.d.ts",
